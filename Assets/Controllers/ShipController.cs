@@ -21,11 +21,10 @@ public class ShipController : MonoBehaviour {
 				tile_go.name = "Tile_" + x + "_" + y;
 				tile_go.transform.position = new Vector3 (tile_data.X, tile_data.Y, 0);
 
-				SpriteRenderer tile_sr = tile_go.AddComponent<SpriteRenderer>();
-
-				if (tile_data.Type == Tile.TileType.Floor) {
-					tile_sr.sprite = floorSprite;
-				}
+				tile_go.AddComponent<SpriteRenderer>();
+				//Debug.Log("Registering callback for "+tile_go.name);
+				tile_data.RegisterTileTypeChangedCallback( (tile) => { OnTileTypeChanged(tile,tile_go);});
+				tile_data.Type = Tile.TileType.Floor;
 			}
 		}
 
@@ -37,11 +36,13 @@ public class ShipController : MonoBehaviour {
 	}
 
 	void OnTileTypeChanged(Tile tile_data, GameObject tile_go){
+		//Debug.Log("Checking " + tile_go.name + ", Type is "+tile_data.Type);
 
 		if (tile_data.Type == Tile.TileType.Floor) {
-			tile_go.GetComponent<SpriteRenderer> ().sprite = floorSprite;
+			Debug.Log("Setting tile sprite to floor.");
+			tile_go.GetComponent<SpriteRenderer>().sprite = floorSprite;
 		} else if (tile_data.Type == Tile.TileType.Empty) {
-			tile_go.GetComponent<SpriteRenderer> ().sprite = null;
+			tile_go.GetComponent<SpriteRenderer>().sprite = null;
 		} else {
 			Debug.LogError ("OnTileTypeChanged - Unrecognized tile type.");
 		}

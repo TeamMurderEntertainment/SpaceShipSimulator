@@ -20,7 +20,7 @@ public class Ship {
 		}
 	}
 
-	public Ship(int width = 10, int height = 30){
+	public Ship(int width = 10, int height = 20){
 		this.width = width;
 		this.height = height;
 

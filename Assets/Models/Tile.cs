@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Tile {
 
@@ -7,12 +8,17 @@ public class Tile {
 
 	TileType type = TileType.Empty;
 
+	Action<Tile> cbTileTypeChanged;
+
 	public TileType Type {
 		get {
 			return type;
 		}
 		set {
 			type = value;
+
+			if (cbTileTypeChanged != null)
+				cbTileTypeChanged(this);
 		}
 	}
 
@@ -40,5 +46,13 @@ public class Tile {
 		this.ship = ship;
 		this.x = x;
 		this.y = y;
+	}
+
+	public void RegisterTileTypeChangedCallback(Action<Tile> callback){
+		cbTileTypeChanged += callback;
+	}
+
+	public void UnregisterTileTypeChangedCallback(Action<Tile> callback){
+		cbTileTypeChanged -= callback;
 	}
 }
