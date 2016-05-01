@@ -3,12 +3,17 @@ using System.Collections;
 
 public class ShipController : MonoBehaviour {
 
+	static ShipController _instance;
+	public static ShipController Instance { get; protected set;}
+
 	public Sprite floorSprite;
 
-	Ship ship;
+	public Ship ship { get; protected set;}
 
 	// Use this for initialization
 	void Start () {
+		Instance = this;
+
 		Debug.Log ("Making new ship");
 		ship = new Ship();
 

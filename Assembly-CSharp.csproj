@@ -66,5 +66,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
+  <ProjectExtensions xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><MonoDevelop><Properties><Policies><TextStylePolicy inheritsSet="Mono" inheritsScope="text/plain" scope="text/x-csharp" /><CSharpFormattingPolicy IndentSwitchBody="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" BeforeMethodDeclarationParentheses="False" WithinMethodDeclarationParentheses="True" BeforeMethodCallParentheses="False" WithinMethodCallParentheses="True" BeforeConstructorDeclarationParentheses="False" WithinConstructorDeclarationParentheses="True" BeforeIndexerDeclarationBracket="False" WithinIndexerDeclarationBracket="True" BeforeDelegateDeclarationParentheses="False" WithinDelegateDeclarationParentheses="True" NewParentheses="False" WithinParentheses="True" WithinIfParentheses="True" WithinWhileParentheses="True" WithinForParentheses="True" WithinForEachParentheses="True" WithinCatchParentheses="True" WithinSwitchParentheses="True" WithinLockParentheses="True" WithinUsingParentheses="True" WithinNewParentheses="True" SpacesWithinBrackets="True" SpacesBeforeBrackets="False" SpacesBeforeForSemicolon="True" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" /></Policies></Properties></MonoDevelop></ProjectExtensions>
+
 </Project>

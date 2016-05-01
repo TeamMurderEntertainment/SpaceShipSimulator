@@ -24,6 +24,9 @@ public class Ship {
 		this.width = width;
 		this.height = height;
 
+		// this makes a ship locked at the maximum of what is feed here
+		// in the future this will have to be expandible,in all directions
+		// for now this is fine
 		tiles = new Tile[width, height];
 
 		for (int x = 0; x < width; x++) {
@@ -40,6 +43,7 @@ public class Ship {
 //			Debug.LogError ("Tile (" + x + "," + y + ") is out of range.");
 //			return null;
 //		}
+		Debug.Log(x+","+y);
 		return tiles [x, y];
 	}
 
