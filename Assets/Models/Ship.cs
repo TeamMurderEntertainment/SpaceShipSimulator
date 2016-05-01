@@ -29,7 +29,6 @@ public class Ship {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				tiles [x, y] = new Tile (this, x, y);
-				tiles [x, y].Type = Tile.TileType.Floor;
 			}
 		}
 

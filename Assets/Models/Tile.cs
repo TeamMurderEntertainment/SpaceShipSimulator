@@ -11,18 +11,20 @@ public class Tile {
 	Action<Tile> cbTileTypeChanged;
 
 	public TileType Type {
-		get {
-			return type;
-		}
+		get {return type;}
 		set {
+			TileType oldType = type;
 			type = value;
 
-			if (cbTileTypeChanged != null)
+			if (cbTileTypeChanged != null && oldType != type)
 				cbTileTypeChanged(this);
 		}
 	}
 
+	// LooseObject is somthing that is not fixed in location, and can be picked up move
 	LooseObject looseObject;
+
+	// InstalledObject is somthing that is fix in place,like furnature or machinery
 	InstalledObject installeObject;
 
 	Ship ship;

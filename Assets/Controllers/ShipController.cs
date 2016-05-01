@@ -20,6 +20,7 @@ public class ShipController : MonoBehaviour {
 				GameObject tile_go = new GameObject();
 				tile_go.name = "Tile_" + x + "_" + y;
 				tile_go.transform.position = new Vector3 (tile_data.X, tile_data.Y, 0);
+				tile_go.transform.SetParent(this.transform, true);
 
 				tile_go.AddComponent<SpriteRenderer>();
 				//Debug.Log("Registering callback for "+tile_go.name);
@@ -36,7 +37,7 @@ public class ShipController : MonoBehaviour {
 	}
 
 	void OnTileTypeChanged(Tile tile_data, GameObject tile_go){
-		//Debug.Log("Checking " + tile_go.name + ", Type is "+tile_data.Type);
+		Debug.Log("Checking " + tile_go.name + ", Type is "+tile_data.Type);
 
 		if (tile_data.Type == Tile.TileType.Floor) {
 			Debug.Log("Setting tile sprite to floor.");
