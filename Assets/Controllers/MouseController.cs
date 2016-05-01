@@ -6,6 +6,7 @@ public class MouseController : MonoBehaviour {
 	public GameObject circleCursor;
 
 	Vector3 lastFramePosition;
+	Vector3 dragStartPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -24,17 +25,41 @@ public class MouseController : MonoBehaviour {
 		circleCursor.transform.position = curserPosition;
 
 		// Handle left mouse clicks
-		if(Input.GetMouseButtonUp(0)){
-			if(tileUnderMouse!=null)
-			{
-				if(tileUnderMouse.Type == Tile.TileType.Empty)
-				{
-					tileUnderMouse.Type = Tile.TileType.Floor;
+		// Start Drag
+		if ( Input.GetMouseButtonDown(0) )
+		{
+			dragStartPosition = currFramePosition;
+		}
 
-				} 
-				else
+		// End Drag
+		if(Input.GetMouseButtonUp(0)){
+			int start_x = 	Mathf.FloorToInt( dragStartPosition.x );
+			int end_x =	Mathf.FloorToInt( curserPosition.x );
+			if ( end_x < start_x )
+			{
+				int tmp = end_x;
+				end_x = start_x;
+				start_x = tmp;
+			}
+
+			int start_y = 	Mathf.FloorToInt( dragStartPosition.y );
+			int end_y =	Mathf.FloorToInt( curserPosition.y );
+			if ( end_y < start_y )
+			{
+				int tmp = end_y;
+				end_y = start_y;
+				start_y = tmp;
+			}
+
+			for ( int x = 0 ; start_x <= end_x ; x++ )
+			{
+				for ( int y = start_y ; y <= end_y ; y++ )
 				{
-					tileUnderMouse.Type = Tile.TileType.Empty;
+					Tile t = ShipController.Instance.ship.GetTileAt( x, y );
+					if ( t != null )
+					{
+						t.Type = Tile.TileType.Floor;
+					}
 				}
 			}
 		}
